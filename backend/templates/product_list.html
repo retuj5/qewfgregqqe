@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>产品列表</title>
+</head>
+<body>
+
+<a href="/">返回首页</a>
+<p>产品列表</p>
+    <li><a href="{{ url_for('product.product_detail_page',id=1) }}">查看产品1</a></li>  #注意超链接带参数a传递
+    <li><a href="{{ url_for('product.product_detail_page',id=2) }}">查看产品2</a></li>  #注意超链接带参数a传递
+</body>
+
+
+</html>
