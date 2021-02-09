@@ -4,9 +4,11 @@ from modules.news.news import news
 from modules.account.account import account
 from modules.product.product import product
 from modules.api.api import api
+from flask_cors import CORS
 
 app = Flask(__name__)  # 实例化并命名为app实例
 app.secret_key = 'lsadfklsjdoijzxclkvnj12312'
+CORS(app)
 urls = [news, account, product, api]
 for url in urls:
     app.register_blueprint(url)
@@ -25,9 +27,7 @@ def index():
     return render_template('index.html', user_data=g.user_data)
 
 
-with app.test_request_context():
-    print(app.config)
-
 if __name__ == "__main__":
     app.config['JSON_AS_ASCII'] = False
     app.run(port=2020, host="127.0.0.1", debug=True)
+    print(app.config)
