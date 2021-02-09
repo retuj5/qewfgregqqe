@@ -10,7 +10,7 @@ const service = axios.create({
     },
     crossDomain: true,
     contentType: "application/json",
-    baseURL: process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:2020/api' : '', // api的base_url
+    baseURL: process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:2020/api' : 'https://www.tangly1024.com/api', // api的base_url
     timeout: 5000 // request timeout
 })
 service.interceptors.request.use(config => {
