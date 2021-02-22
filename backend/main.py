@@ -1,33 +1,37 @@
-from flask import Flask, render_template, session, g
+from flask import Flask, session, g
 
-from modules.news.news import news
-from modules.account.account import account
-from modules.product.product import product
-from modules.api.api import api
+import modules
 from flask_cors import CORS
 
 app = Flask(__name__)  # 实例化并命名为app实例
 app.secret_key = 'lsadfklsjdoijzxclkvnj12312'
 CORS(app)
-urls = [news, account, product, api]
-for url in urls:
-    app.register_blueprint(url)
+modules.init_app(app)
 
 
-@app.before_request
-def common():
+def load_site_config():
     # 全局变量每次请求时赋值
-    g.user_data = session
+    if "site" not in g:
+        # user = User.get_admin()
+        user = {
+            'settings': {
+                "locale": "zh",
+                "name": "唐哼哼博客",
+                "cover_url": "/static/images/cover.jpg",
+                "avatar": "/static/images/avatar.jpeg",
+                "description": "A simple blog powered by Flask",
+            }
+        }
+        g.site = user['settings']
+    if "user_data" not in g:
+        g.user_data = session
     print(f'当前用户 ：{session}')
 
 
-@app.route('/')
-def index():
-    """首页"""
-    return render_template('index.html', user_data=g.user_data)
-
-
 if __name__ == "__main__":
+    app.debug = True
+    app.env = 'development'  # 区分开发环境与生产环境
     app.config['JSON_AS_ASCII'] = False
+    app.before_request(load_site_config)
     app.run(port=2020, host="127.0.0.1", debug=True)
     print(app.config)
