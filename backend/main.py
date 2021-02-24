@@ -2,11 +2,13 @@ from flask import Flask, session, g
 
 import modules
 from flask_cors import CORS
+from common import templating
 
 app = Flask(__name__)  # 实例化并命名为app实例
 app.secret_key = 'lsadfklsjdoijzxclkvnj12312'
 CORS(app)
 modules.init_app(app)
+templating.init_app(app)
 
 
 def load_site_config():

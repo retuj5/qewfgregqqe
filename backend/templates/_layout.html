@@ -23,9 +23,12 @@
     {% include 'partials/head.html' %}
     {% block extracss %}
     {% endblock %}
-    <style>:root {
-        --primary-color: {{ g.site.primary_color|default('black') }};
-    }</style>
+
+    <style>
+        :root {
+            --primary-color: {{ g.site.primary_color|default('gray') }};
+        }
+    </style>
 </head>
 
 <body data-spy="scroll" data-target="#contents">
