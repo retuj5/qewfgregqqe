@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>
-        {{ g.site.name }}
-    </title>
+    <title>{{ g.site.name }}</title>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
     <meta name="description" content="{% block description %}{{ g.site.description }}{% endblock %}">
@@ -32,15 +30,15 @@
 
 <body data-spy="scroll" data-target="#contents">
 <div id="page-wraper">
-    <!-- Sidebar Menu -->
+    {#侧边菜单#}
     {% include 'partials/sidebar.html' %}
 
+    {#内容主题#}
     <section class="section">
         {% block mainbody %}{% endblock %}
     </section>
 </div>
 {% block additional %}{% endblock %}
-
 {% block scripts %}
     {% include 'partials/scripts.html' %}
 {% endblock %}

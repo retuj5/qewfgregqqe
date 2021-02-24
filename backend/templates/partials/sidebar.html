@@ -10,17 +10,19 @@
         <h4>{{ g.site.name }}</h4>
         <span>{{ g.site.description }}</span>
       </div>
-{#      <nav class="main-nav" role="navigation">#}
-{#        <ul class="main-menu">#}
-{#          <li {% if request.endpoint == '/' %}class="active"{% endif %}><a href="{{ url_for('home') }}">{{_('Articles')}}</a></li>#}
-{#          <li {% if request.endpoint == 'archive' %}class="active"{% endif %}><a href="{{ url_for('archive') }}">{{_('Archive')}}</a></li>#}
+      <nav class="main-nav" role="navigation">
+        <ul class="main-menu">
+        {{ request.endpoint }}
+          <li {% if request.endpoint == 'blog.index' %}class="active"{% endif %}><a href="{{ url_for('blog.index') }}">首页</a></li>
+          <li {% if request.endpoint == 'news.news_page' %}class="active"{% endif %}><a href="{{ url_for('news.news_page') }}">新闻</a></li>
+          <li {% if request.endpoint == 'product.product_page' %}class="active"{% endif %}><a href="{{ url_for('product.product_page') }}">产品</a></li>
 {#          {% for item in pages %}#}
 {#            {% if item.display %}#}
 {#            <li {% if request.path == '/' + item.slug %}class="active"{% endif %}><a href="/{{ item.slug }}">{{_(item.title)|title}}</a></li>#}
 {#            {% endif %}#}
 {#          {% endfor %}#}
-{#        </ul>#}
-{#      </nav>#}
+        </ul>
+      </nav>
 {#      <div class="social-network">#}
 {#        <a href="#" class="search-btn mb-2" data-toggle="modal" data-target="#search-modal"><i class="fa fa-search"></i> {{_('SEARCH')}}</a>#}
 {#        <ul class="social-icons">#}
