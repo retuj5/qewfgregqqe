@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>登录页</title>
-</head>
-<body>
+{% extends '_layout.html' %}
 
-<div>
-        <form action="/loginProcess" method="post">
-        用户名: <input type="text" name="nm"><br>
-        用户密码: <input type="password" name="pwd"> <br>
-        <input type="submit" name="submit" value="登录">
-        </form>
+{% block mainbody %}
+    <div class="container" data-aos="fade-in">
+        <div>
+            <form action="/loginProcess" method="post">
+                用户名: <input type="text" name="nm"><br>
+                用户密码: <input type="password" name="pwd"> <br>
+                <input type="submit" name="submit" value="登录">
+            </form>
+        </div>
     </div>
-
-<img src="{{ url_for('static',filename='img/avatar.jpeg')}}" alt="">
-
-</body>
-</html>
+{% endblock %}

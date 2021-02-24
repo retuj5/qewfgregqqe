@@ -169,6 +169,7 @@ html {
 }
 
 .menu .copyright-text {
+  color: white;
   position: relative;
   margin-top: 60px;
 }
