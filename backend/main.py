@@ -18,6 +18,7 @@ def load_site_config():
         user = {
             'settings': {
                 "locale": "zh",
+                "start_from": "2020",
                 "name": "唐哼哼博客",
                 "cover_url": "/static/images/cover.jpg",
                 "avatar": "/static/images/avatar.jpeg",
